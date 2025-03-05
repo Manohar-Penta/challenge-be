@@ -10,12 +10,12 @@ import 'dotenv/config';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST,
-      port: 3306,
+      port: parseInt(process.env.DB_PORT as string),
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: [Team, Task, Member],
-      synchronize: true, // set to false in prod
+      synchronize: process.env.NODE_ENV === 'development', // set to false in prod
     }),
     TeamModule,
     TaskModule,
