@@ -2,7 +2,6 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  JoinTable,
   OneToMany,
   ManyToOne,
 } from 'typeorm';
@@ -44,7 +43,8 @@ export class Task {
   @Column('date')
   due_date: Date;
 
-  @Column({ type: 'enum', enum: ['done', 'pending'], default: 'pending' })
+  // @Column({ type: 'enum', enum: ['done', 'pending'], default: 'pending' })
+  @Column('text')
   status: TaskStatus;
 
   @ManyToOne(() => Member, (member) => member.tasks)

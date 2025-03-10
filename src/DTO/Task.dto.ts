@@ -5,7 +5,7 @@ import {
   IsString,
   Matches,
 } from 'class-validator';
-import { TaskStatus } from 'src/TypeORM/entities';
+import { TaskStatus } from 'TypeORM/entities';
 
 export class CreateTaskDto {
   @IsNotEmpty()
