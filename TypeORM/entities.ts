@@ -16,7 +16,9 @@ export class Team {
   @Column('text')
   name: string;
 
-  @OneToMany(() => Member, (member) => member.team, { cascade: ['insert'] })
+  @OneToMany(() => Member, (member) => member.team, {
+    cascade: ['insert'],
+  })
   members: Member[];
 }
 
