@@ -6,8 +6,6 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-export type TaskStatus = 'done' | 'pending';
-
 @Entity()
 export class Team {
   @PrimaryGeneratedColumn('uuid')
@@ -47,7 +45,7 @@ export class Task {
 
   // @Column({ type: 'enum', enum: ['done', 'pending'], default: 'pending' })
   @Column('text')
-  status: TaskStatus;
+  status: string;
 
   @ManyToOne(() => Member, (member) => member.tasks)
   member: Member;

@@ -5,7 +5,6 @@ import {
   IsString,
   Matches,
 } from 'class-validator';
-import { TaskStatus } from 'TypeORM/entities';
 
 export class CreateTaskDto {
   @IsNotEmpty()
@@ -21,6 +20,10 @@ export class CreateTaskDto {
     message: '$property must be formatted as yyyy-mm-dd',
   })
   due_date: Date;
+
+  @IsNotEmpty()
+  @IsString()
+  status: string;
 }
 
 export class AssignTaskDto {
@@ -49,5 +52,6 @@ export class UpdateTaskDto {
   due_date: Date;
 
   @IsString()
-  status: TaskStatus;
+  @IsOptional()
+  status: string;
 }

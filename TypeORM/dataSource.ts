@@ -10,7 +10,6 @@ export const dataSourceOptions: DataSourceOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [Team, Task, Member],
-  synchronize: true,
 };
 
 const dataSource = new DataSource(dataSourceOptions);
