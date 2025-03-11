@@ -1,4 +1,5 @@
 import {
+  IsInt,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -8,11 +9,11 @@ import {
 
 export class CreateTaskDto {
   @IsNotEmpty()
-  @IsNumber()
+  @IsInt()
   id: number;
 
-  @IsString()
   @IsNotEmpty()
+  @IsString()
   description: string;
 
   @IsNotEmpty()
@@ -37,8 +38,8 @@ export class AssignTaskDto {
 }
 
 export class UpdateTaskDto {
-  @IsNotEmpty()
   @IsNumber()
+  @IsNotEmpty()
   id: number;
 
   @IsString()

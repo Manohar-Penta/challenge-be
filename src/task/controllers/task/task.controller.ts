@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseArrayPipe,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { AssignTaskDto, CreateTaskDto, UpdateTaskDto } from 'src/DTO/Task.dto';
 import { TaskService } from 'src/task/services/task/task.service';
 
@@ -14,7 +22,15 @@ export class TaskController {
 
   // create task route with a array of tasks
   @Post('create')
-  async createTask(@Body() body: CreateTaskDto[]) {
+  async createTask(
+    @Body(
+      new ParseArrayPipe({
+        items: CreateTaskDto,
+        whitelist: true,
+      }),
+    )
+    body: CreateTaskDto[],
+  ) {
     return await this.taskService.createTask(body);
   }
 
